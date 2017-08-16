@@ -1,0 +1,25 @@
+{% for task in tasks %}
+    <tr>
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.author }}</td>
+        <td>{{ task.publication_date }}</td>
+
+        <td style="width: 150px">
+            <button type="button"
+                      class="btn btn-warning btn-sm js-update-task"
+                      data-url="{% url 'task_update' task.id %}">
+                <span class="glyphicon glyphicon-pencil"></span> Редактировать
+            </button>
+            <button type="button"
+                    class="btn btn-danger btn-sm js-delete-task"
+                    data-url="{% url 'task_delete' task.id %}">
+                <span class="glyphicon glyphicon-trash"></span> Удалить
+            </button>
+        </td>
+    </tr>
+{% empty %}
+    <tr>
+        <td colspan="8" class="text-center bg-warning">Задач нет</td>
+    </tr>
+{% endfor %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+    <script src="{% static 'tasks/js/tasks.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="page-header">Задачи</h1>
+
+<p>
+    <button type="button" class="btn btn-primary js-create-task" data-url="{% url 'task_create' %}">
+        <span class="glyphicon glyphicon-plus"></span>
+        Новая задача
+    </button>
+</p>
+
+<table class="table" id="task-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Задача</th>
+            <th>Автор задачи</th>
+            <th>Дата постановки</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% include 'tasks/includes/partial_task_list.html' %}
+    </tbody>
+</table>
+
+<div class="modal fade" id="modal-task">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
